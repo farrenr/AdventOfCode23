@@ -37,7 +37,7 @@ fn create_digits_map() -> HashMap<String, i32> {
 fn find_first_last_digit(value: &str, map: &HashMap<String, i32>) -> i32 {
     //println!("Input string is {}", value);
 
-    // Inital string sanitisation to remove digits and make lowercase
+    // Initial string sanitisation to remove digits and make lowercase
     let r = Regex::new(r"[0-9]").unwrap();
     let s = r.replace_all(value, "").to_lowercase();
 
@@ -48,7 +48,7 @@ fn find_first_last_digit(value: &str, map: &HashMap<String, i32>) -> i32 {
     let mut last = None::<i32>;
     let mut string_i = 0;
     let mut key_i = 0;
-    let mut added: bool;
+    let mut added: bool; 
     while string_i < s.len() {
         //println!("i is {}", string_i.to_string());
         //println!("k is {}", key_i.to_string());
@@ -89,9 +89,8 @@ fn find_first_last_digit(value: &str, map: &HashMap<String, i32>) -> i32 {
             key_i = 0;
         } else {
             key_i += 1;
+            string_i += 1;
         }
-
-        string_i += 1;
     }
 
     if first == None {
