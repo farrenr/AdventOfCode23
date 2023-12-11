@@ -20,15 +20,6 @@ fn find_first_last_digit(value: &str) -> i32{
     let r = Regex::new(r"[a-zA-Z]").unwrap();
     let s = r.replace_all(value, "");
 
-
-    let firsti = 0;
-    let lasti = s.len()-1;
-
-    if firsti == lasti {
-        let first = s.chars().nth(0).unwrap();   
-        return first.to_string().parse().unwrap();
-    }
-
     let first = s.chars().nth(0).unwrap();
     let last = s.chars().nth(s.len()-1).unwrap();
 
