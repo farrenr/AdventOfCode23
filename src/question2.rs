@@ -12,38 +12,21 @@ struct CubePool {
 }
 
 pub fn question2() {
-    // Cube pool
-    let available_cubes = CubePool {
-        game_id: 0,
-        red: 12,
-        green: 13,
-        blue: 14,
-    };
 
     let mut sum = 0;
     if let Ok(lines) = read_lines("./question2input.txt") {
         for line in lines {
             if let Ok(result) = line {
-                sum += is_game_possible(&result, &available_cubes);
+                sum += get_cube_power(&result);
             }
         }
     }
     println!("The answer is {}", sum);
 }
 
-fn is_game_possible(game_string: &String, cube_pool: &CubePool) -> i32 {
+fn get_cube_power(game_string: &String) -> i32 {
     let game_cubes = get_cube_pool_from_game_string(game_string);
-    if game_cubes.red <= cube_pool.red
-        && game_cubes.green <= cube_pool.green
-        && game_cubes.blue <= cube_pool.blue
-    {
-        println!("Game possible game id {}", game_cubes.game_id);
-        return game_cubes.game_id;
-    }
-
-    // return id if possible, else return 0
-    println!("Game not possible 0");
-    return 0;
+    return game_cubes.red * game_cubes.green * game_cubes.blue;
 }
 
 fn get_cube_pool_from_game_string(game_string: &String) -> CubePool {
