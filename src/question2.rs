@@ -59,9 +59,21 @@ fn get_cube_pool_from_game_string(game_string: &String) -> CubePool {
         let digit = r2.replace_all(part, "").parse::<i32>().unwrap();
         match sanitised.chars().nth(0).unwrap() {
             'G' => game_id = digit,
-            'r' => if red < digit { red = digit},
-            'g' => if green < digit { green = digit },
-            'b' => if blue < digit { blue = digit },
+            'r' => {
+                if red < digit {
+                    red = digit
+                }
+            }
+            'g' => {
+                if green < digit {
+                    green = digit
+                }
+            }
+            'b' => {
+                if blue < digit {
+                    blue = digit
+                }
+            }
             _ => panic!(),
         }
     }
