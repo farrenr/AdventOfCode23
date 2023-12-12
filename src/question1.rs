@@ -48,7 +48,7 @@ fn find_first_last_digit(value: &str, map: &HashMap<String, i32>) -> i32 {
     let mut last = None::<i32>;
     let mut string_i = 0;
     let mut key_i = 0;
-    let mut added: bool; 
+    let mut added: bool;
     while string_i < s.len() {
         //println!("i is {}", string_i.to_string());
         //println!("k is {}", key_i.to_string());
