@@ -1,8 +1,4 @@
 use regex::Regex;
-use std::fs::File;
-use std::io;
-use std::io::BufRead;
-use std::path::Path;
 
 struct CubePool {
     game_id: i32,
@@ -11,15 +7,10 @@ struct CubePool {
     blue: i32,
 }
 
-pub fn question2() {
-
+pub fn question2(input: Vec<String>) {
     let mut sum = 0;
-    if let Ok(lines) = read_lines("./question2input.txt") {
-        for line in lines {
-            if let Ok(result) = line {
-                sum += get_cube_power(&result);
-            }
-        }
+    for line in input {
+        sum += get_cube_power(&line);
     }
     println!("The answer is {}", sum);
 }
@@ -66,12 +57,4 @@ fn get_cube_pool_from_game_string(game_string: &String) -> CubePool {
         green,
         blue,
     };
-}
-
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where
-    P: AsRef<Path>,
-{
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
 }

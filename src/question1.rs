@@ -1,19 +1,12 @@
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
 extern crate regex;
 use regex::Regex;
 use std::collections::HashMap;
 
-pub fn question1() {
+pub fn question1(input: Vec<String>) {
     let mut sum = 0;
     let digits_map: HashMap<String, i32> = create_digits_map();
-    if let Ok(lines) = read_lines("./question1input.txt") {
-        for line in lines {
-            if let Ok(result) = line {
-                sum += find_first_last_digit(&result, &digits_map);
-            }
-        }
+    for line in input {
+        sum += find_first_last_digit(&line, &digits_map);
     }
     println!("The answer is {}", sum);
 }
@@ -106,12 +99,4 @@ fn find_first_last_digit(value: &str, map: &HashMap<String, i32>) -> i32 {
         last.unwrap().to_string()
     );
     (first.unwrap() * 10) + last.unwrap()
-}
-
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where
-    P: AsRef<Path>,
-{
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
 }
