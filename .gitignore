@@ -14,4 +14,4 @@ Cargo.lock
 *.pdb
 
 # Question input files
-*input.txt
+*.txt
