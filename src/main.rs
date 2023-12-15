@@ -5,10 +5,11 @@ use std::path::Path;
 
 mod question1;
 mod question2;
+mod question3;
 
 fn main() {
-    let lines = read_lines("./question2input.txt").unwrap();
-    question2::question2(lines);
+    let lines = read_lines("./question3input.txt").unwrap();
+    question3::question3(lines);
 }
 
 fn read_lines<P>(filename: P) -> io::Result<Vec<String>>
